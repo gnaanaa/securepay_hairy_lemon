@@ -118,7 +118,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)){
 	$address = $_POST['address'];
 	$email = $_POST['email'];
 	$product = $_POST['product'];
-	$productPrice = $dbFunctions->selectRecords("SELECT ItemPrice FROM items WHERE ItemID ='$product'");
+	$productPrice = $dbFunctions->selectRecords("SELECT ItemPrice FROM items WHERE ItemID ='".mysql_real_escape_string($product)."'");
 	$price = $productPrice[0]['ItemPrice'];
 	$quantity = $_POST['quantity'];
 	$amount = $quantity*$price;
